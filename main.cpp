@@ -4,44 +4,45 @@ constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    //N_ELEMENTS van definiálva korábban
-    int *b = new int[NELEMENTS]; 
+    //N_ELEMENTS-re javítva NELEMENTS helyett
+    int *b = new int[N_ELEMENTS]; 
     
-    //kettős idézőjelet kéne használni (")
-    std::cout << '1-100 ertekek duplazasa'
+    //(')-t (")-ra javítva illetve std::endl.el befejezve
+    std::cout << "1-100 ertekek duplazasa"<< std::endl;
 
 
-    //hiányzik a feltétel és az i léptetése a ciklusból
-    for (int i = 0;)
+    //ciklus feltétel javítva
+    for (int i = 0;i<N_ELEMENTS;i++)
     {
-        //i+1*2 képlettel duplázná meg 1-100-ig
-        b[i] = i * 2;
+        //Ciklus belső 1-tő kezd nem 0-tól
+        b[i] = (i+1) * 2;
     }
 
-    //a ciklusfeltétel miatt a for egyszer sem fut le
-    for (int i = 0; i; i++)
+    //a ciklusfeltétel javítva működőre
+    for (int i = 0; i<N_ELEMENTS; i++)
     {
-	//hiányzik a pontosvessző, illetve a szám egyáltalán nincs kiíratva
-        std::cout << "Ertek:"
+	//értékek normáisan kiiratva
+        std::cout << "Ertek:" << b[i] << std::endl;
     }  
 
   
     std::cout << "Atlag szamitasa: " << std::endl;
 
-    // érdemes kezdőértéket megadni, hogy ne szeméttel kezdjen
-    int atlag;
+    // kezdőérték megadva szeméttel kezdés kerülve
+    int atlag=0;
 
-    // vessző helyett pontosvesszővel kell elválasztani a deklarációkat a for ciklus fejében
-    for (int i = 0; i < N_ELEMENTS, i++)
+    // vessző pontosvesszőre javítva
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-	//hiányzik pontosvessző
-        atlag += b[i]
+	//pontosvessző pótolva
+        atlag += b[i];
     }
 
 
     atlag /= N_ELEMENTS;
     std::cout << "Atlag: " << atlag << std::endl;
     
-    //a new-val foglalt memóriát fel kell szabadítani
+    //memória felszabdítva
+    delete[] b;
     return 0;
 }
