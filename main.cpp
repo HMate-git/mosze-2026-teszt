@@ -44,5 +44,6 @@ int main()
     
     //memória felszabdítva
     delete[] b;
+    std::cout << "ami az STDOUT-ra kiír valamit" <<std::endl;
     return 0;
 }
